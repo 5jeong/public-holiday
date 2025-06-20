@@ -1,0 +1,36 @@
+spring:
+
+  profiles:
+    active: local # default
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test2
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+
+---
+# local config
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+---
+# test config
+spring:
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
