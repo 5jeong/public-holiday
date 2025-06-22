@@ -2,6 +2,7 @@ package com.holidayproject.domain.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.tuple;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -53,7 +54,12 @@ class CountryApiClientTest {
         List<CountryDto> result = countryApiClient.getAvailableCountries();
 
         // then
-        assertThat(result).hasSize(2);
+        assertThat(result).hasSize(2)
+                .extracting("countryCode","name")
+                .containsExactlyInAnyOrder(
+                        tuple("KR","Korea"),
+                        tuple("US","United States")
+                );
     }
 
     @DisplayName("국가목록 API가 오류 응답일 경우 BussinessException이 발생한다")
