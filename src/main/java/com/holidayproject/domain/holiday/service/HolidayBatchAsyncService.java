@@ -2,6 +2,7 @@ package com.holidayproject.domain.holiday.service;
 
 import com.holidayproject.domain.country.entity.Country;
 import com.holidayproject.domain.country.repository.CountryRepository;
+import com.holidayproject.domain.holiday.dto.response.SuccessMessageResponse;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +18,13 @@ import org.springframework.stereotype.Service;
 public class HolidayBatchAsyncService {
 
     public static final int BATCH_SIZE = 20;
+    public static final String SAVE_SUCCESSS_MESSAGE = "모든 국가 최근 5년치 공휴일 데이터 적재 완료";
 
     private final CountryRepository countryRepository;
     private final HolidaySaveService holidaySaveService;
     private final ThreadPoolTaskExecutor holidayExecutor;
 
-    public void saveHolidaysForFiveRecentYears() {
+    public SuccessMessageResponse saveHolidaysForFiveRecentYears() {
         int currentYear = Year.now().getValue();
         int startYear = currentYear - 4;
 
@@ -55,7 +57,8 @@ public class HolidayBatchAsyncService {
                     (currentYear - startYear + 1) * countryBatch.size());
         }
 
-        log.info("공휴일 저장 전체 완료");
+        log.info("모든 국가 최근 5년치 공휴일 데이터 적재 완료");
+        return SuccessMessageResponse.of(SAVE_SUCCESSS_MESSAGE);
     }
 
     private <T> List<List<T>> splitList(List<T> list) {
