@@ -4,7 +4,7 @@ import com.holidayproject.domain.holiday.entity.Holiday;
 import java.time.LocalDate;
 import java.util.List;
 
-public record HolidayResponse(
+public record HolidaySearchResponse(
         Integer year,
         LocalDate date,
         String localName,
@@ -16,8 +16,8 @@ public record HolidayResponse(
         List<String> counties,
         List<String> types
 ) {
-    public static HolidayResponse of(Holiday h) {
-        return new HolidayResponse(
+    public static HolidaySearchResponse of(Holiday h) {
+        return new HolidaySearchResponse(
                 h.getYear(),
                 h.getDate(),
                 h.getLocalName(),

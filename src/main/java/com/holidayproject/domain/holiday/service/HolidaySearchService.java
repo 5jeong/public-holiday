@@ -1,7 +1,7 @@
 package com.holidayproject.domain.holiday.service;
 
 import com.holidayproject.domain.holiday.dto.request.HolidaySearchRequest;
-import com.holidayproject.domain.holiday.dto.response.HolidayResponse;
+import com.holidayproject.domain.holiday.dto.response.HolidaySearchResponse;
 import com.holidayproject.domain.holiday.repository.HolidayRepository;
 import com.holidayproject.global.exception.BusinessException;
 import com.holidayproject.global.exception.ErrorCode;
@@ -20,7 +20,7 @@ public class HolidaySearchService {
 
     private final HolidayRepository holidayRepository;
 
-    public Page<HolidayResponse> searchHolidays(HolidaySearchRequest request, Pageable pageable) {
+    public Page<HolidaySearchResponse> searchHolidays(HolidaySearchRequest request, Pageable pageable) {
         validateSearchRequest(request);
         return holidayRepository.searchHolidays(request, pageable);
     }

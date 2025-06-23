@@ -3,7 +3,7 @@ package com.holidayproject.domain.holiday.repository;
 import static com.holidayproject.domain.holiday.entity.QHoliday.holiday;
 
 import com.holidayproject.domain.holiday.dto.request.HolidaySearchRequest;
-import com.holidayproject.domain.holiday.dto.response.HolidayResponse;
+import com.holidayproject.domain.holiday.dto.response.HolidaySearchResponse;
 import com.holidayproject.domain.holiday.entity.Holiday;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -24,7 +24,7 @@ public class HolidayRepositoryCustomImpl implements HolidayRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<HolidayResponse> searchHolidays(HolidaySearchRequest request, Pageable pageable) {
+    public Page<HolidaySearchResponse> searchHolidays(HolidaySearchRequest request, Pageable pageable) {
         List<Holiday> holidays = queryFactory
                 .selectFrom(holiday)
                 .where(applyAllFilters(request))
@@ -33,8 +33,8 @@ public class HolidayRepositoryCustomImpl implements HolidayRepositoryCustom {
                 .orderBy(holiday.date.asc())
                 .fetch();
 
-        List<HolidayResponse> content = holidays.stream()
-                .map(HolidayResponse::of)
+        List<HolidaySearchResponse> content = holidays.stream()
+                .map(HolidaySearchResponse::of)
                 .toList();
 
         JPAQuery<Long> countQuery = queryFactory.

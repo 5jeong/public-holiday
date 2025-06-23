@@ -9,7 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.holidayproject.domain.holiday.dto.request.HolidaySearchRequest;
-import com.holidayproject.domain.holiday.dto.response.HolidayResponse;
+import com.holidayproject.domain.holiday.dto.response.HolidaySearchResponse;
 import com.holidayproject.domain.holiday.repository.HolidayRepository;
 import com.holidayproject.global.exception.BusinessException;
 import com.holidayproject.global.exception.ErrorCode;
@@ -45,11 +45,11 @@ class HolidaySearchServiceTest {
                 .build();
 
         Pageable pageable = PageRequest.of(0, 10);
-        Page<HolidayResponse> mockPage = new PageImpl<>(List.of());
+        Page<HolidaySearchResponse> mockPage = new PageImpl<>(List.of());
         given(holidayRepository.searchHolidays(any(), any())).willReturn(mockPage);
 
         // when
-        Page<HolidayResponse> result = holidaySearchService.searchHolidays(request, pageable);
+        Page<HolidaySearchResponse> result = holidaySearchService.searchHolidays(request, pageable);
 
         // then
         assertThat(result).isNotNull();

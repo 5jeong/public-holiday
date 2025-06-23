@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import com.holidayproject.IntegrationTestSupport;
 import com.holidayproject.domain.holiday.dto.request.HolidaySearchRequest;
-import com.holidayproject.domain.holiday.dto.response.HolidayResponse;
+import com.holidayproject.domain.holiday.dto.response.HolidaySearchResponse;
 import com.holidayproject.domain.holiday.entity.Holiday;
 import java.time.LocalDate;
 import java.util.List;
@@ -60,7 +60,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .build();
 
         // when
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         // then
         assertThat(result).hasSize(1)
@@ -86,7 +86,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .build();
 
         // when
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         // then
         assertThat(result).hasSize(1)
@@ -111,7 +111,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .build();
 
         // when
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         // then
         assertThat(result).hasSize(1)
@@ -136,7 +136,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .build();
 
         // when
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         // then
         assertThat(result).hasSize(1)
@@ -161,7 +161,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .build();
 
         // when
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         // then
         assertThat(result).hasSize(2)
@@ -185,7 +185,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .fixed(false)
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(1)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global")
@@ -207,7 +207,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .global(false)
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(1)
                 .extracting("localName", "global")
@@ -227,7 +227,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .launchYear(1948)
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(1)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global", "launchYear")
@@ -248,7 +248,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .types(List.of("Public"))
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(1)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global")
@@ -270,7 +270,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .counties(List.of("Seoul"))
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(1)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global")
@@ -296,7 +296,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .countryCode("KR")
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(2)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global")
@@ -325,7 +325,7 @@ class HolidayRepositoryTest extends IntegrationTestSupport {
                 .types(List.of("Public"))
                 .build();
 
-        Page<HolidayResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
+        Page<HolidaySearchResponse> result = holidayRepository.searchHolidays(request, Pageable.ofSize(10));
 
         assertThat(result).hasSize(2)
                 .extracting("date", "localName", "name", "countryCode", "year", "fixed", "global")
