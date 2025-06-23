@@ -4,6 +4,6 @@ import com.holidayproject.domain.holiday.entity.Holiday;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface HolidayRepository extends JpaRepository<Holiday, Long> {
+public interface HolidayRepository extends JpaRepository<Holiday, Long>, HolidayRepositoryCustom {
     List<Holiday> findAllByYearAndCountryCode(int year, String countryCode);
 }
