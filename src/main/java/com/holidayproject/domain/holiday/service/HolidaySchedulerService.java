@@ -1,6 +1,5 @@
-package com.holidayproject.global.scheduler;
+package com.holidayproject.domain.holiday.service;
 
-import com.holidayproject.domain.holiday.service.HolidayUpsertService;
 import com.holidayproject.global.component.HolidayBatchExecutor;
 import java.time.Year;
 import java.util.List;
