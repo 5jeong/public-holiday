@@ -45,7 +45,7 @@ class HolidaySearchServiceTest {
                 .countryCode("KR")
                 .build();
 
-        Pageable pageable = PageRequest.of(1, 10);
+        Pageable pageable = PageRequest.of(0, 10);
         Page<HolidaySearchResponse> mockPage = new PageImpl<>(List.of());
         given(holidayRepository.searchHolidays(any(), any())).willReturn(mockPage);
 
@@ -68,7 +68,7 @@ class HolidaySearchServiceTest {
                 .toDate(LocalDate.of(2024, 12, 31))
                 .build();
 
-        Pageable pageable = PageRequest.of(1, 10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         // when & then
         assertThatThrownBy(() -> holidaySearchService.searchHolidays(request, pageable))
@@ -87,7 +87,7 @@ class HolidaySearchServiceTest {
                 .toDate(LocalDate.of(2024, 1, 1))
                 .build();
 
-        Pageable pageable = PageRequest.of(1, 10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         // when & then
         assertThatThrownBy(() -> holidaySearchService.searchHolidays(request, pageable))
@@ -95,23 +95,6 @@ class HolidaySearchServiceTest {
                 .hasMessage(ErrorCode.INVALID_DATE_RANGE.getMessage());
 
         verify(holidayRepository, never()).searchHolidays(any(), any());  // 레파지토리 호출 x
-    }
-
-    @Test
-    @DisplayName("페이지 번호가 0 이하로 요청하면 예외가 발생한다.")
-    void searchHolidaysTest4() {
-        // given
-        HolidaySearchRequest request = HolidaySearchRequest.builder()
-                .build();
-
-        Pageable pageable = PageRequest.of(0, 10);
-
-        // when & then
-        assertThatThrownBy(() -> holidaySearchService.searchHolidays(request, pageable))
-                .isInstanceOf(BusinessException.class)
-                .hasMessage(ErrorCode.INVALID_PAGE_NUMBER.getMessage());
-
-        verify(holidayRepository, never()).searchHolidays(any(), any());
     }
 
 }

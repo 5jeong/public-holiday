@@ -32,8 +32,5 @@ public class HolidaySearchService {
         if (request.fromDate() != null && request.toDate() != null && request.fromDate().isAfter(request.toDate())) {
             throw new BusinessException(ErrorCode.INVALID_DATE_RANGE);
         }
-        if (pageable.getPageNumber() <= 0) {
-            throw new BusinessException(ErrorCode.INVALID_PAGE_NUMBER);
-        }
     }
 }
