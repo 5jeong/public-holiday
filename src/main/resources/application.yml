@@ -13,6 +13,10 @@ spring:
     username: sa
     password:
 
+  data:
+    redis:
+      host: localhost
+      port: 6380
 
 ---
 # local config
