@@ -7,8 +7,8 @@ import com.holidayproject.domain.holiday.service.HolidayBatchAsyncService;
 import com.holidayproject.domain.holiday.service.HolidayDeleteService;
 import com.holidayproject.domain.holiday.service.HolidaySearchService;
 import com.holidayproject.domain.holiday.service.HolidayUpsertService;
+import com.holidayproject.global.common.PageResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +29,7 @@ public class HolidayFacadeService {
     }
 
     // 조건 기반 검색
-    public Page<HolidaySearchResponse> search(HolidaySearchRequest request, Pageable pageable) {
+    public PageResponse<HolidaySearchResponse> search(HolidaySearchRequest request, Pageable pageable) {
         return holidaySearchService.searchHolidays(request, pageable);
     }
 
