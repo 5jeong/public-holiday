@@ -14,6 +14,7 @@ public enum ErrorCode {
     NAGER_DATE_API_ERROR(HttpStatus.BAD_REQUEST, 1002, "Nager Date API 오류입니다."),
     LOCK_ACQUIRE_FAIL(HttpStatus.CONFLICT, 1003, "공휴일 데이터에 대한 락 획득에 실패했습니다."),
     BATCH_JOB_ERROR(HttpStatus.CONFLICT, 1004, "배치 작업 처리중 예외가 발생했습니다."),
+    INVALID_PAGE_NUMBER(HttpStatus.BAD_REQUEST, 1005, "페이지 번호는 1부터 시작해야합니다.."),
 
     // 2000번대 - 공휴일 관련 로직 에러
     INVALID_SEARCH_CONDITION(HttpStatus.BAD_REQUEST, 2001, "year와 from/to는 동시에 검색할 수 없습니다."),
