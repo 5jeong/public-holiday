@@ -12,12 +12,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class HolidaySchedulerService {
 
-
     private final HolidayUpsertService holidayUpsertService;
     private final HolidayBatchExecutor batchExecutor;
 
     public void syncLastAndThisYear() {
-
         List<Integer> years = getYears();
         batchExecutor.execute(years, holidayUpsertService::upsert);
 
