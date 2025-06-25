@@ -59,8 +59,8 @@ public class HolidayController {
     @PostMapping("/search")
     public ApiResponse<PageResponse<HolidaySearchResponse>> searchHolidays(
             @RequestBody HolidaySearchRequest request,
-            @RequestParam int page,
-            @RequestParam int size
+            @RequestParam(required = false, defaultValue = "1") int page,
+            @RequestParam(required = false,defaultValue = "10") int size
     ) {
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by("date").ascending());
         return ApiResponse.success(holidayFacadeService.search(request, pageable));
