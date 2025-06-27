@@ -32,7 +32,7 @@ docker-compose up -d
 
 ### 2️⃣ Spring Boot 서버 실행
 ```bash
-java -jar build/libs/holiday-0.0.1-SNAPSHOT.jar --spring.config.location=./application.yml
+java -jar build/libs/holiday-project-0.0.1-SNAPSHOT.jar --spring.config.location=./application.yml
 ```
 
 ### ⚠️ H2 DB 설정 (`url`)은 반드시 명시되어야 합니다
