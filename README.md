@@ -11,8 +11,8 @@
 ## ✅ 1. GitHub 저장소 Clone
 
 ```bash
-git clone https://github.com/your-username/holiday-project.git
-cd holiday-project
+git clone https://github.com/5jeong/public-holiday.git
+cd public-holiday
 ```
 
 ## ✅ 2. Redis 서버 실행 (필수)
