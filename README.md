@@ -25,16 +25,6 @@ docker-compose up -d
 ```
 
 ## ✅ 3. 애플리케이션 실행
-### 1️⃣ Gradle 빌드
-```bash
-./gradlew build
-```
-
-### 2️⃣ Spring Boot 서버 실행
-```bash
-java -jar build/libs/holiday-project-0.0.1-SNAPSHOT.jar --spring.config.location=./application.yml
-```
-
 ### ⚠️ H2 DB 설정 (`url`)은 반드시 명시되어야 합니다
 - 아래 설정처럼 `url: jdbc:h2:mem:test`을 **인 메모리방식으로 입력**하면 H2 DB에 접근이 가능합니다.
 ```yaml
@@ -42,8 +32,17 @@ spring:
   datasource:
     url: jdbc:h2:mem:test
 ```
-
 - 해당 설정이 없거나 잘못되면, **H2 DB가 정상 연결되지 않아 애플리케이션 실행이 실패**합니다.
+
+### 1️⃣ Gradle 빌드
+```bash
+./gradlew build
+```
+
+### 2️⃣ Spring Boot 서버 실행
+```bash
+java -jar build/libs/holiday-project-0.0.1-SNAPSHOT.jar --spring.config.location=file:./src/main/resources/application.yml
+```
 
 ### 3️⃣ Swagger API 문서 접속
 ```
