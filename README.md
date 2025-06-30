@@ -17,9 +17,9 @@ cd holiday-project
 
 ## ✅ 2. Redis 서버 실행 (필수)
 ### Redis 서버는 필수입니다
-
+- Docker Desktop을 설치해야 docker-compose up -d 명령이 동작합니다.
 - `docker-compose.yml`을 통해 Redis 서버를 실행하지 않으면, 애플리케이션에서 **Redisson Lock 처리 시 오류**가 발생
-- 반드시 `docker-compose up -d`로 Redis 컨테이너를 띄운 후 실행해주세요요
+- 반드시 `docker-compose up -d`로 Redis 컨테이너를 띄운 후 실행해주세요
 ```bash
 docker-compose up -d
 ```
@@ -36,11 +36,11 @@ java -jar build/libs/holiday-project-0.0.1-SNAPSHOT.jar --spring.config.location
 ```
 
 ### ⚠️ H2 DB 설정 (`url`)은 반드시 명시되어야 합니다
-- 아래 설정처럼 `url: jdbc:h2:tcp://localhost/~/test2`을 **명시적으로 입력**해야 H2 DB에 TCP 방식으로 접근이 가능합니다.
+- 아래 설정처럼 `url: jdbc:h2:mem:test`을 **인 메모리방식으로 입력**하면 H2 DB에 접근이 가능합니다.
 ```yaml
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/test2
+    url: jdbc:h2:mem:test
 ```
 
 - 해당 설정이 없거나 잘못되면, **H2 DB가 정상 연결되지 않아 애플리케이션 실행이 실패**합니다.
@@ -56,8 +56,12 @@ spring:
   profiles:
     active: local # 기본 실행 프로파일
 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   datasource:
-    url: jdbc:h2:tcp://localhost/~/test2
+    url: jdbc:h2:mem:test
     driver-class-name: org.h2.Driver
     username: sa
     password:
